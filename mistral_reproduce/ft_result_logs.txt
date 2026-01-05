@@ -1,0 +1,10 @@
+/mnt/care_workspace/CARE/mistral_reproduce/checkpoints/mistral/step_1500 nq 0.4319
+####################
+/mnt/care_workspace/CARE/mistral_reproduce/checkpoints/mistral/step_1500 triviaqa 0.6811
+####################
+/mnt/care_workspace/CARE/mistral_reproduce/checkpoints/mistral/step_1500 webqa 0.3479
+####################
+/mnt/care_workspace/CARE/mistral_reproduce/checkpoints/mistral/step_1500 factkg 0.5437
+####################
+/mnt/care_workspace/CARE/mistral_reproduce/checkpoints/mistral/step_1500 truthfulqa 0.0208
+####################

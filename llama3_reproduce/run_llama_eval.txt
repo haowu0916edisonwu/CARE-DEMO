@@ -1,0 +1,29 @@
+pkill -u haowu -9 python
+
+# 2. 设置物理底座路径 (请确认这个路径下确实有 config.json)
+export PHYSICAL_PATH="/mnt/care_workspace/hf_cache/hub/models--NousResearch--Meta-Llama-3-8B-Instruct/snapshots/53346005fb0ef11d3b6a83b12c895cca40156b6c"
+
+cd /mnt/care_workspace/CARE
+
+# 3. 启动全量评测 (注意转义字符和变量引用)
+nohup bash -c "
+export TRANSFORMERS_OFFLINE=1
+export HF_HUB_OFFLINE=1
+# 关键：手动指定缓存根目录，防止它去 /home/haowu 下找锁
+export HF_HOME='/mnt/care_workspace/hf_cache'
+
+for task in nq triviaqa webqa factkg truthfulqa; do
+    echo \">> [PROCESS] Starting Local Eval: \$task\"
+    python -m src.eval.run_eval_llama \
+        --data \$task \
+        --model_name_or_path '$PHYSICAL_PATH' \
+        --checkpoint_path '/mnt/care_workspace/checkpoints/llama3/step_2100' \
+        --use_rag --eval_batch_size 8 --save_results \
+        --results_path \"llama3_\${task}_local_final.json\"
+    sleep 5
+done
+" > local_final_fix.log 2>&1 &
+
+echo "🚀 修正版本地评测已启动！监控进度：tail -f local_final_fix.log"
+[1] 325695
+🚀 修正版本地评测已启动！监控进度：tail -f local_final_fix.log

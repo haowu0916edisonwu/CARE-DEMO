@@ -1,0 +1,10 @@
+/mnt/care_workspace/checkpoints/llama3/step_2100 nq 0.4518
+####################
+/mnt/care_workspace/checkpoints/llama3/step_2100 triviaqa 0.6926
+####################
+/mnt/care_workspace/checkpoints/llama3/step_2100 webqa 0.3519
+####################
+/mnt/care_workspace/checkpoints/llama3/step_2100 factkg 0.5696
+####################
+/mnt/care_workspace/checkpoints/llama3/step_2100 truthfulqa 0.0184
+####################
